@@ -19,6 +19,11 @@ namespace PersistenceServer.RPCs
         {
             var cookie = reader.ReadMmoString();
             var charId = reader.ReadInt32();
+            if (charId < 0)
+            {
+                Console.WriteLine("LoginClientWithCookie: Incorrect char id, must be >= 0. Have you launched PIE in incorrect net mode?");
+                return;
+            }
 #if DEBUG
             if (Server!.Settings.UniversalCookie == cookie)
             {
