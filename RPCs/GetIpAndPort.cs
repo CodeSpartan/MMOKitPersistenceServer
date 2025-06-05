@@ -27,6 +27,7 @@ namespace PersistenceServer.RPCs
             if (accountId < 0)
             {
                 Console.WriteLine("GetIpAndPort failed: user provided bad cookie!");
+                Console.WriteLine("Cookie sent by client: " + cookie);
                 // send something to disconnect the player to the main menu
                 connection.Send(MergeByteArrays(
                     ToBytes(RpcType.RpcGetIpAndPort),

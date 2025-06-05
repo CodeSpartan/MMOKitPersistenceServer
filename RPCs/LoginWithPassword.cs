@@ -24,9 +24,9 @@
             int accountId = await Server!.Database.LoginUser(accountName, password); // returns -1 if login failed
             // if account exists
             if (accountId >= 0)
-            {
-                Console.WriteLine($"Logging in: '{accountName}', id: {accountId}");
+            {                
                 var cookie = BCrypt.Net.BCrypt.GenerateSalt();
+                Console.WriteLine($"Logging in: '{accountName}', id: {accountId}, cookie: {cookie}");
                 Server!.GameLogic.UserLoggedIn(accountId, cookie, connection);
 
                 // sending true to signify "success", plus a cookie
